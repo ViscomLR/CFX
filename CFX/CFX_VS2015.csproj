@@ -20,7 +20,7 @@
     <OutputPath>bin2015\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin2015\CFX.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Production\Application\SolderDispensing\" />
+    <Folder Include="Production\Processing\LaserMarking\" />
     <Folder Include="Properties\" />
+    <Folder Include="Structures\SolderDispensing\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -118,12 +121,9 @@
     <Compile Include="Production\Application\MaterialsApplied.cs" />
     <Compile Include="Production\Application\MaterialsUnapplied.cs" />
     <Compile Include="Production\Application\NamespaceDoc.cs" />
-    <Compile Include="Production\Application\SolderDispensing\NamespaceDoc.cs" />
-    <Compile Include="Production\Application\SolderDispensing\PCBSoldered.cs" />
     <Compile Include="Production\Assembly\MaterialsInstalled.cs" />
     <Compile Include="Production\Assembly\MaterialsUninstalled.cs" />
     <Compile Include="Production\Assembly\NamespaceDoc.cs" />
-    <Compile Include="Production\Assembly\ToolsUsed.cs" />
     <Compile Include="Production\Assembly\UnitsPersonalized.cs" />
     <Compile Include="Production\BlockMaterialLocationsRequest.cs" />
     <Compile Include="Production\BlockMaterialLocationsResponse.cs" />
@@ -138,8 +138,6 @@
     <Compile Include="Production\NamespaceDoc.cs" />
     <Compile Include="Production\OperatorActivated.cs" />
     <Compile Include="Production\OperatorDeactivated.cs" />
-    <Compile Include="Production\Processing\LaserMarking\NamespaceDoc.cs" />
-    <Compile Include="Production\Processing\LaserMarking\UnitsLaserProcessed.cs" />
     <Compile Include="Production\Processing\NamespaceDoc.cs" />
     <Compile Include="Production\ReadingsRecorded.cs" />
     <Compile Include="Production\RecipeActivated.cs" />
@@ -168,8 +166,6 @@
     <Compile Include="ResourcePerformance\FaultOccurred.cs" />
     <Compile Include="ResourcePerformance\LogEntryRecorded.cs" />
     <Compile Include="ResourcePerformance\MaintenancePerformed.cs" />
-    <Compile Include="ResourcePerformance\ModifyStationParameterRequest.cs" />
-    <Compile Include="ResourcePerformance\ModifyStationParameterResponse.cs" />
     <Compile Include="ResourcePerformance\NamespaceDoc.cs" />
     <Compile Include="ResourcePerformance\SMTPlacement\ComponentsPlaced.cs" />
     <Compile Include="ResourcePerformance\SMTPlacement\NamespaceDoc.cs" />
@@ -183,7 +179,6 @@
     <Compile Include="ResourcePerformance\StageStateChanged.cs" />
     <Compile Include="ResourcePerformance\StationOffline.cs" />
     <Compile Include="ResourcePerformance\StationOnline.cs" />
-    <Compile Include="ResourcePerformance\StationParameterModified.cs" />
     <Compile Include="ResourcePerformance\StationStateChanged.cs" />
     <Compile Include="ResourcePerformance\THTInsertion\ComponentsInserted.cs" />
     <Compile Include="ResourcePerformance\THTInsertion\NamespaceDoc.cs" />
@@ -194,20 +189,29 @@
     <Compile Include="Sensor\Identification\NamespaceDoc.cs" />
     <Compile Include="Sensor\NamespaceDoc.cs" />
     <Compile Include="Structures\AccessType.cs" />
+    <Compile Include="Structures\Activity.cs" />
+    <Compile Include="Structures\ActivityState.cs" />
     <Compile Include="Structures\ActorType.cs" />
     <Compile Include="Structures\BlockReason.cs" />
     <Compile Include="Structures\BooleanMeasurement.cs" />
+    <Compile Include="Structures\Calibration.cs" />
+    <Compile Include="Structures\CalibrationType.cs" />
     <Compile Include="Structures\Characteristic.cs" />
     <Compile Include="Structures\ComponentDesignator.cs" />
     <Compile Include="Structures\ConsumedMaterial.cs" />
     <Compile Include="Structures\DataType.cs" />
     <Compile Include="Structures\Defect.cs" />
     <Compile Include="Structures\DimensionalConstraints.cs" />
+    <Compile Include="Structures\DisqualificationReason.cs" />
     <Compile Include="Structures\Endpoint.cs" />
     <Compile Include="Structures\EnvironmentalCondition.cs" />
     <Compile Include="Structures\Fault.cs" />
     <Compile Include="Structures\FaultCause.cs" />
     <Compile Include="Structures\FaultSeverity.cs" />
+    <Compile Include="Structures\GenericParameter.cs" />
+    <Compile Include="Structures\HazardousMaterialType.cs" />
+    <Compile Include="Structures\Head.cs" />
+    <Compile Include="Structures\HeadInformation.cs" />
     <Compile Include="Structures\HermesInformation.cs" />
     <Compile Include="Structures\Humidity.cs" />
     <Compile Include="Structures\Image.cs" />
@@ -238,9 +242,13 @@
     <Compile Include="Structures\NumericValue.cs" />
     <Compile Include="Structures\OperatingRequirements.cs" />
     <Compile Include="Structures\Operator.cs" />
+    <Compile Include="Structures\Parameter.cs" />
     <Compile Include="Structures\PCBInspection\NamespaceDoc.cs" />
     <Compile Include="Structures\PCBInspection\OffsetMeasurement.cs" />
     <Compile Include="Structures\PersonalizedUnit.cs" />
+    <Compile Include="Structures\ProcessData.cs" />
+    <Compile Include="Structures\ProcessedUnit.cs" />
+    <Compile Include="Structures\ProcessingResult.cs" />
     <Compile Include="Structures\Reading.cs" />
     <Compile Include="Structures\Recipe.cs" />
     <Compile Include="Structures\RecipeModificationReason.cs" />
@@ -260,18 +268,19 @@
     <Compile Include="Structures\SMTPlacement\SMDTapeWidth.cs" />
     <Compile Include="Structures\SMTPlacement\SMDTrayFeeder.cs" />
     <Compile Include="Structures\SMTPlacement\SMDTubeFeeder.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTHeadAndNozzle.cs" />
     <Compile Include="Structures\SMTPlacement\SMTHeadInformation.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTHeadType.cs" />
     <Compile Include="Structures\SMTPlacement\SMTLaneInformation.cs" />
-    <Compile Include="Structures\SMTPlacement\SMTNozzle.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTNozzleChangeActivity.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTPlacementActivity.cs" />
     <Compile Include="Structures\SMTPlacement\SMTPlacementConstraints.cs" />
     <Compile Include="Structures\SMTPlacement\SMTPlacementEndpoint.cs" />
     <Compile Include="Structures\SMTPlacement\SMTPlacementFault.cs" />
     <Compile Include="Structures\SMTPlacement\SMTPlacementFaultType.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTPlacementType.cs" />
     <Compile Include="Structures\SMTPlacement\SMTStageInformation.cs" />
-    <Compile Include="Structures\SolderDispensing\NamespaceDoc.cs" />
-    <Compile Include="Structures\SolderDispensing\SolderedPCB.cs" />
-    <Compile Include="Structures\SolderDispensing\SolderingData.cs" />
-    <Compile Include="Structures\SolderDispensing\ZoneData.cs" />
+    <Compile Include="Structures\SMTPlacement\SMTUnitAlignmentActivity.cs" />
     <Compile Include="Structures\SolderPasteInspection\SolderPasteMeasurement.cs" />
     <Compile Include="Structures\SolderPastePrinting\NamespaceDoc.cs" />
     <Compile Include="Structures\SolderPastePrinting\SMTSolderPastePrintingFault.cs" />
@@ -280,9 +289,13 @@
     <Compile Include="Structures\SolderPastePrinting\SMTSqueegeeCleanType.cs" />
     <Compile Include="Structures\SolderPastePrinting\SMTStencil.cs" />
     <Compile Include="Structures\SolderPastePrinting\SMTStencilCleanMode.cs" />
+    <Compile Include="Structures\Stage.cs" />
+    <Compile Include="Structures\StageInformation.cs" />
+    <Compile Include="Structures\StageType.cs" />
     <Compile Include="Structures\StationSetupRequirements.cs" />
     <Compile Include="Structures\StatusResult.cs" />
     <Compile Include="Structures\SupportedTopic.cs" />
+    <Compile Include="Structures\SupportedTopicQueryType.cs" />
     <Compile Include="Structures\Symptom.cs" />
     <Compile Include="Structures\Temperature.cs" />
     <Compile Include="Structures\Test.cs" />
@@ -295,15 +308,22 @@
     <Compile Include="Structures\THTInsertion\THTInsertionFaultType.cs" />
     <Compile Include="Structures\Tool.cs" />
     <Compile Include="Structures\ToolHolder.cs" />
+    <Compile Include="Structures\ToolSetupRequirement.cs" />
     <Compile Include="Structures\ToolUsed.cs" />
     <Compile Include="Structures\TopicSupportType.cs" />
     <Compile Include="Structures\TransportOrderHistory.cs" />
     <Compile Include="Structures\TransportOrderStatus.cs" />
     <Compile Include="Structures\UninstalledMaterial.cs" />
+    <Compile Include="Structures\UninstalledReason.cs" />
+    <Compile Include="Structures\UnitAlignmentActivity.cs" />
+    <Compile Include="Structures\UnitConveyingActivity.cs" />
+    <Compile Include="Structures\UnitLoadActivity.cs" />
     <Compile Include="Structures\UnitPosition.cs" />
+    <Compile Include="Structures\UnitUnloadActivity.cs" />
     <Compile Include="Structures\ValidationResult.cs" />
     <Compile Include="Structures\ValidationStatus.cs" />
     <Compile Include="Structures\ValidationType.cs" />
+    <Compile Include="Structures\ValueAddType.cs" />
     <Compile Include="Structures\WorkOrder.cs" />
     <Compile Include="Structures\WorkOrderIdentifier.cs" />
     <Compile Include="Structures\WorkOrderStatus.cs" />
@@ -326,6 +346,7 @@
     <Compile Include="Utilities\EnvironmentHelper.cs" />
     <Compile Include="Utilities\JsonConvert.cs" />
     <Compile Include="Utilities\NamespaceDoc.cs" />
+    <Compile Include="Utilities\StateConverter.cs" />
     <Compile Include="WhoIsThereRequest.cs" />
     <Compile Include="WhoIsThereResponse.cs" />
   </ItemGroup>
